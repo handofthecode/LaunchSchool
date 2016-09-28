@@ -1,0 +1,25 @@
+1)
+GIVEN two integers
+ADD them together
+    save sum
+AFTER print the sum
+
+
+
+START
+GET two integers 
+SET both of them
+SET saved number =  the sum of the two integers
+PRINT the saved number
+
+2)
+START with an array of strings
+ITERATE through each strings
+SET and CONCATONATE each string to a string variable
+PRINT variable
+
+3)
+GIVEN array of integers
+ITERATE
+IF [x] % 2 != 0
+PUSH integer to new array

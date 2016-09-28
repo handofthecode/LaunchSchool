@@ -1,0 +1,1 @@
+puts "x was declared within the scope of the do/end. calling it outside triggers an error"
