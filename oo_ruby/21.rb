@@ -3,18 +3,16 @@ module Hand
     hand = cards if hand.nil?
     total = 0
     hand.each do |card|
-      total += if card[0] == 'J' || card[0] == 'Q' || card[0] == 'K'
+      total += case card[0]
+               when 'J', 'Q', 'K'
                  10
-               elsif card[0] == 'A'
+               when 'A'
                  11
                else
                  card[0].to_i
                end
     end
-
-    hand.select { |card| card[0] == 'A' }.each do
-      total -= 10 if total > 21
-    end
+    hand.select { |card| card[0] == 'A' }.each { total -= 10 if total > 21 }
     total
   end
 
@@ -23,14 +21,22 @@ module Hand
   end
 end
 
-class Dealer
+class Participant
   include Hand
+  attr_accessor :cards, :name
+  def initialize
+    @name = ''
+    @cards = []
+  end
+end
+
+class Dealer < Participant
   COMPUTER_NAMES = ['TARZAN', 'THE JACKLE', 'MR. FISH', 'DONALD TRUMP',
                     'PROFESSOR SCIENCE', 'A SMOLDERING CIGAR', 'A BLUE WHALE',
                     'AN OLD MUFFIN', 'PUMPKIN FACE', 'A SMALL LINT BALL',
                     'THE WICKED WITCH OF THE WEST',  'A BLACK HOLE'].freeze
 
-  attr_accessor :cards, :visible_cards, :visible_total, :name
+  attr_accessor :visible_cards, :visible_total
   def initialize
     @cards = []
     @visible_cards = []
@@ -52,15 +58,7 @@ class Dealer
   end
 end
 
-class Player
-  include Hand
-  attr_accessor :cards, :name
-
-  def initialize
-    @cards = []
-    @name = ''
-  end
-
+class Player < Participant
   def set_name
     puts "What is your name?"
     answer = ''
@@ -74,7 +72,7 @@ class Player
 end
 
 class Deck
-  DECK = ((1..10).to_a + %w(J Q K A)).product(%w(S C H D))
+  DECK = ((2..10).to_a + %w(J Q K A)).product(%w(S C H D))
   attr_accessor :cards
 
   def initialize
@@ -181,6 +179,7 @@ class Game
     puts compare_hands
   end
 
+  # rubocop:disable Metrics/AbcSize
   def display_hands
     system 'clear'
     puts
@@ -196,6 +195,7 @@ class Game
     puts "                 Cards left in deck: #{deck.cards.count}"
     puts
   end
+  # rubocop:enable Metrics/AbcSize
 
   def setup
     deal
