@@ -94,22 +94,19 @@ class Game
 
   def deal
     2.times do
-      human_hit
-      computer_hit
+      hit(human)
+      hit(computer)
     end
   end
 
-  def human_hit
-    human.cards << deck.deal_card
+  def hit(player)
+    player.cards << deck.deal_card
     display_hands
-    puts "#{computer.name} deals you a card..."
-    sleep(1)
-  end
-
-  def computer_hit
-    computer.cards << deck.deal_card
-    display_hands
-    puts "#{computer.name} takes a card..."
+    if player.class == Dealer
+      puts "#{computer.name} takes a card..."
+    else
+      puts "#{computer.name} deals you a card..."
+    end
     sleep(1)
   end
 
@@ -126,13 +123,12 @@ class Game
 
   def player_turn
     loop do
-      case hit_or_stay
-      when 's'
+      if hit_or_stay == 's'
         puts "You decide to play it safe."
         sleep(1)
         break
       else
-        human_hit
+        hit(human)
       end
       next unless human.bust?
       puts "You Busted!"
@@ -153,7 +149,7 @@ class Game
         sleep(1)
         break
       else
-        computer_hit
+        hit(computer)
       end
     end
   end
