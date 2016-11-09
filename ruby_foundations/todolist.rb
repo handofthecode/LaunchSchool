@@ -148,7 +148,3 @@ list = TodoList.new("Today's Todos")
 list.add(todo1)
 list.add(todo2)
 list.add(todo3)
-
-todo1.done!
-
-puts list.mark_all_done

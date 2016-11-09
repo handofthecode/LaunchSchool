@@ -1,0 +1,21 @@
+
+[1mFrom:[0m /home/ubuntu/workspace/ruby_foundations/weekly_challenges/run_length_encoding.rb @ line 17 RunLengthEncoding.encode:
+
+     [1;34m4[0m: [32mdef[0m [1;36mself[0m.[1;34mencode[0m(input)
+     [1;34m5[0m:   result = [31m[1;31m'[0m[31m[1;31m'[0m[31m[0m
+     [1;34m6[0m:   count = [1;34m1[0m
+     [1;34m7[0m:   input.chars.each_with_index [32mdo[0m |letter, idx|
+     [1;34m8[0m:     [32mif[0m result[[1;34m-1[0m] == letter
+     [1;34m9[0m:       count += [1;34m1[0m
+    [1;34m10[0m:     [32melsif[0m count > [1;34m1[0m && (letter != result[[1;34m-1[0m] || idx == input.size - [1;34m1[0m)
+    [1;34m11[0m:       count += [1;34m1[0m
+    [1;34m12[0m:       result.insert([1;34m-2[0m, count.to_s)
+    [1;34m13[0m:       count = [1;34m1[0m
+    [1;34m14[0m:     [32melse[0m
+    [1;34m15[0m:       result << letter
+    [1;34m16[0m:     [32mend[0m
+ => [1;34m17[0m:     binding.pry
+    [1;34m18[0m:   [32mend[0m
+    [1;34m19[0m:   result
+    [1;34m20[0m: [32mend[0m
+
