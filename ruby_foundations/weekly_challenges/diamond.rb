@@ -13,3 +13,5 @@ class Diamond
     end << "\n"
   end
 end
+
+puts Diamond.make_diamond "Z"

@@ -1,0 +1,9 @@
+<em><h2><%= @motto %></h2></em>
+<div class="purple_white">
+<h3>Current Profiles</h3>
+  <ul>
+    <% @names_array.each do |name| %>
+      <li><a href="/<%= name %>"><%= name %></a></li>
+    <% end %>
+  </ul>
+</div>

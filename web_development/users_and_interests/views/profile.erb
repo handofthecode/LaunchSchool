@@ -1,0 +1,18 @@
+<h1><%= @name.capitalize %>'s page!</h1>
+<div style="background-color: green">
+  <h2>You can reach me at:</h2>
+  <p><%= @email %></p>
+</div>
+<div style="background-color: orange">
+  <h2>I'm interested in:</h2>
+  <p><%= @interests %></p>
+</div>
+<div class="purple_white">
+  <h3>Visit Other Profiles</h3>
+  <ul>
+    <% (@names_array - [@name.to_sym]).each do |name| %>
+      <li><a href="/<%= name %>"><%= name %></a></li>
+    <% end %>
+  </ul>
+</div>
+<p><a href="/">Return to Homepage</a></p>

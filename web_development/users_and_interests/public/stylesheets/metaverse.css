@@ -1,0 +1,47 @@
+h1 {
+  color: #55acee;
+}
+h2 {
+
+}
+
+h3 {
+  text-decoration: underline;
+}
+
+* {
+  font-family: Garamond;
+  text-align: center;
+}
+/*
+ul {
+  
+}*/
+
+a, a:hover, a:active, a:visited { 
+  color: white;
+  background-color: purple;
+}
+
+
+ul {
+  width: 10em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+li {
+  text-align: left;
+  color: white;
+  margin-bottom: 1em
+}
+
+
+.purple_white {
+  background-color: purple;
+  color: white;
+}
+
+div div {
+  padding: 3em
+}
